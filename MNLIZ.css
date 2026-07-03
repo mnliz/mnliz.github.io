@@ -1,6 +1,9 @@
+/* MNLIZ Site CSS
+ * Dark and bold. Inspired by Keen Design System CSS.
+ */
 
 /* ==========================================================================
-   FONTS — IBM Plex Sans/Mono + Bebas Neue, self-hosted
+   FONTS — IBM Plex Sans/Mono + Bebas Neue
    ========================================================================== */
 
 @font-face {
@@ -47,7 +50,7 @@
 }
 
 /* ==========================================================================
-   TOKENS — Dark mode
+   CSS VARIABLES
    ========================================================================== */
 
 :root {
@@ -76,7 +79,7 @@
 }
 
 /* ==========================================================================
-   RESET / BASE
+   RESET AND BASE STYLES
    ========================================================================== */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,8 +114,6 @@ body::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-a { color: inherit; }
-
 img { max-width: 100%; display: block; }
 
 ::selection { background: var(--signal); color: var(--ink); }
@@ -123,13 +124,13 @@ img { max-width: 100%; display: block; }
 }
 
 .wrap {
-  max-width: 46rem;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 0 1.25rem;
 }
 
 /* ==========================================================================
-   TYPE SCALE
+   TYPOGRAPHY
    ========================================================================== */
 
 h1, h2, h3 {
@@ -154,31 +155,14 @@ h3 {
 
 p { max-width: 62ch; }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--paper-dim);
-}
-
-.mono { font-family: var(--font-mono); }
-
 /* ==========================================================================
-   DIVIDER — straight rule
+   LINKS
    ========================================================================== */
 
-.divider {
-  height: 0;
-  margin: 3.5rem 0;
-  border-top: 1px solid var(--rule-strong);
-}
-
-.divider.tight { margin: 2rem 0; }
+a { color: inherit; }
 
 /* ==========================================================================
-   NAV
+   NAVIGATION
    ========================================================================== */
 
 nav.site-nav {
@@ -207,11 +191,17 @@ nav.site-nav a:hover { color: var(--paper); }
 
 nav.site-nav a.current {
   color: var(--signal);
-  border-bottom-color: var(--signal);
 }
 
-nav.site-nav a.current::before { content: "[ "; }
-nav.site-nav a.current::after { content: " ]"; }
+nav.site-nav a.current::before { content: "["; }
+nav.site-nav a.current::after { content: "]"; }
+
+nav.site-nav a.section {
+  color: var(--signal);
+}
+
+nav.site-nav a.section::before { content: "["; }
+nav.site-nav a.section::after { content: "]"; }
 
 /* ==========================================================================
    HERO
@@ -232,6 +222,18 @@ nav.site-nav a.current::after { content: " ]"; }
 }
 
 /* ==========================================================================
+   DIVIDER — straight rule
+   ========================================================================== */
+
+.divider {
+  height: 0;
+  margin: 3.5rem 0;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.divider.tight { margin: 2rem 0; }
+
+/* ==========================================================================
    SECTIONS / ABOUT
    ========================================================================== */
 
@@ -244,26 +246,50 @@ section { padding-top: 0; }
   margin-bottom: 1.5rem;
 }
 
-.placeholder {
-  color: var(--paper-dim);
-  font-style: italic;
-}
-
-.placeholder::before { content: "["; }
-.placeholder::after { content: "]"; }
-
 /* ==========================================================================
-   PROJECTS — "specimen" cards
+   PHOTOS
    ========================================================================== */
 
-.specimens {
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-text {
+  flex: 1 1 20rem;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   PROJECTS
+   ========================================================================== */
+
+.project-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem 1.75rem;
   margin-top: 0.5rem;
 }
 
-.specimen {
+.project-card {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--rule-strong);
@@ -272,12 +298,12 @@ section { padding-top: 0; }
   transition: transform 0.2s ease, border-left-color 0.2s ease;
 }
 
-.specimen:hover {
+.project-card:hover {
   transform: translateY(-3px);
   border-left-color: var(--signal);
 }
 
-.specimen .catalog {
+.project-card .catalog {
   display: block;
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -286,9 +312,9 @@ section { padding-top: 0; }
   margin-bottom: 0.6rem;
 }
 
-.specimen p { color: var(--paper-dim); margin-bottom: 1rem; font-size: 0.98rem; }
+.project-card p { color: var(--paper-dim); margin-bottom: 1rem; font-size: 0.98rem; }
 
-.specimen .links {
+.project-card .links {
   display: flex;
   gap: 1rem;
   font-family: var(--font-mono);
@@ -296,24 +322,24 @@ section { padding-top: 0; }
   letter-spacing: 0.04em;
 }
 
-.specimen .links a {
+.project-card .links a {
   text-decoration: none;
   color: var(--signal);
   border-bottom: 1px solid transparent;
 }
-.specimen .links a:hover { border-bottom-color: var(--signal); }
+.project-card .links a:hover { border-bottom-color: var(--signal); }
 
 /* ==========================================================================
-   DISPATCHES (blog preview)
+   BLOGS
    ========================================================================== */
 
-.dispatch {
+.blog-card {
   padding: 1.4rem 0;
   border-top: 1px solid var(--rule);
 }
-.dispatch:last-child { border-bottom: 1px solid var(--rule); }
+.blog-card:last-child { border-bottom: 1px solid var(--rule); }
 
-.dispatch .meta {
+.blog-card .meta {
   display: flex;
   gap: 1rem;
   align-items: baseline;
@@ -324,19 +350,19 @@ section { padding-top: 0; }
   margin-bottom: 0.5rem;
 }
 
-.dispatch .tag {
+.blog-card .tag {
   color: var(--paper);
   background: var(--flare);
   padding: 0.05rem 0.45rem;
   text-transform: uppercase;
 }
 
-.dispatch h3 { text-transform: none; font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; }
+.blog-card h3 { text-transform: none; font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; }
 
-.dispatch a.title-link { text-decoration: none; color: var(--paper); }
-.dispatch a.title-link:hover { color: var(--signal); }
+.blog-card a.title-link { text-decoration: none; color: var(--paper); }
+.blog-card a.title-link:hover { color: var(--signal); }
 
-.dispatch p { color: var(--paper-dim); font-size: 0.98rem; }
+.blog-card p { color: var(--paper-dim); font-size: 0.98rem; }
 
 .see-all {
   display: inline-block;
@@ -411,7 +437,7 @@ footer {
 }
 
 /* ==========================================================================
-   SCROLL REVEAL
+   ANIMATIONS & INTERACTIONS
    ========================================================================== */
 
 .reveal {
@@ -426,7 +452,7 @@ footer {
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE DESIGN
    ========================================================================== */
 
 @media (max-width: 640px) {
@@ -436,3 +462,22 @@ footer {
   footer { flex-direction: column; }
 }
 
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+}
+
+.mono { font-family: var(--font-mono); }
+
+.paragraph {
+  color: var(--paper-dim);
+  margin-bottom: 0.5rem;
+}
