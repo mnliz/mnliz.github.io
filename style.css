@@ -47,7 +47,7 @@
 }
 
 /* ==========================================================================
-   TOKENS — dark only, deliberately. No light theme, no toggle.
+   TOKENS — Dark mode
    ========================================================================== */
 
 :root {
@@ -62,11 +62,7 @@
   --paper: #efe9dd;
   --paper-dim: #a79c8f;
 
-  /* accents — burgundy is used only as a solid fill (badges/tags/card rail),
-     never as small text or a thin line on the dark ground, since it doesn't
-     clear text-contrast minimums there. bright red carries every interactive/
-     text accent instead. color is also never the sole carrier of meaning —
-     state is additionally shown via brackets, underlines and labels. */
+  /* accents */
   --flare: #8b0000;
   --flare-dim: #6e0d0d;
   --signal: #ef4136;
