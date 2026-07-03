@@ -191,10 +191,11 @@ nav.site-nav a:hover { color: var(--paper); }
 
 nav.site-nav a.current {
   color: var(--signal);
+  border-bottom-color: var(--signal);
 }
 
-nav.site-nav a.current::before { content: "["; }
-nav.site-nav a.current::after { content: "]"; }
+nav.site-nav a.current::before { content: "[ "; }
+nav.site-nav a.current::after { content: " ]"; }
 
 nav.site-nav a.section {
   color: var(--signal);
