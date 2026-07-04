@@ -214,7 +214,7 @@ nav.site-nav a.section::after { content: "]"; }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 9vw, 5.4rem);
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
   line-height: 0.95;
   letter-spacing: -0.005em;
   text-transform: uppercase;
@@ -235,7 +235,7 @@ nav.site-nav a.section::after { content: "]"; }
 .divider.tight { margin: 2rem 0; }
 
 /* ==========================================================================
-   SECTIONS / ABOUT
+   SECTIONS 
    ========================================================================== */
 
 section { padding-top: 0; }
@@ -248,49 +248,38 @@ section { padding-top: 0; }
 }
 
 /* ==========================================================================
-   PHOTOS
+   PHOTO
    ========================================================================== */
 
-.about-content {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1.75rem;
-}
-
-.profile-photo {
-  width: 200px;
-  height: 200px;
+.photo {
+  width: 400px;
+  height: 400px;
   flex-shrink: 0;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 1.75rem;
 }
 
-.profile-photo img {
+.photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.about-text {
-  flex: 1 1 20rem;
-  min-width: 0;
-}
-
 /* ==========================================================================
    PROJECTS
    ========================================================================== */
 
-.project-cards {
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem 1.75rem;
   margin-top: 0.5rem;
 }
 
-.project-card {
+.card {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--rule-strong);
@@ -299,48 +288,12 @@ section { padding-top: 0; }
   transition: transform 0.2s ease, border-left-color 0.2s ease;
 }
 
-.project-card:hover {
+.card:hover {
   transform: translateY(-3px);
   border-left-color: var(--signal);
 }
 
-.project-card .catalog {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  color: var(--signal);
-  margin-bottom: 0.6rem;
-}
-
-.project-card p { color: var(--paper-dim); margin-bottom: 1rem; font-size: 0.98rem; }
-
-.project-card .links {
-  display: flex;
-  gap: 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-}
-
-.project-card .links a {
-  text-decoration: none;
-  color: var(--signal);
-  border-bottom: 1px solid transparent;
-}
-.project-card .links a:hover { border-bottom-color: var(--signal); }
-
-/* ==========================================================================
-   BLOGS
-   ========================================================================== */
-
-.blog-card {
-  padding: 1.4rem 0;
-  border-top: 1px solid var(--rule);
-}
-.blog-card:last-child { border-bottom: 1px solid var(--rule); }
-
-.blog-card .meta {
+.card .meta {
   display: flex;
   gap: 1rem;
   align-items: baseline;
@@ -348,22 +301,41 @@ section { padding-top: 0; }
   font-size: 0.75rem;
   color: var(--paper-dim);
   letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
-.blog-card .tag {
+.card .tag {
   color: var(--paper);
   background: var(--flare);
   padding: 0.05rem 0.45rem;
   text-transform: uppercase;
 }
 
-.blog-card h3 { text-transform: none; font-family: var(--font-body); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; }
+.card h3 { color: var(--paper); }
 
-.blog-card a.title-link { text-decoration: none; color: var(--paper); }
-.blog-card a.title-link:hover { color: var(--signal); }
+.card a.title-link { text-decoration: none; color: var(--paper); }
+.card a.title-link:hover { color: var(--signal); }
 
-.blog-card p { color: var(--paper-dim); font-size: 0.98rem; }
+.card p { color: var(--paper-dim); margin-bottom: 1rem; font-size: 0.98rem; }
+
+.card .links {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.card .links a {
+  text-decoration: none;
+  color: var(--signal);
+  border-bottom: 1px solid transparent;
+}
+.card .links a:hover { border-bottom-color: var(--signal); }
+
+/* ==========================================================================
+   BLOGS
+   ========================================================================== */
 
 .see-all {
   display: inline-block;
@@ -481,4 +453,8 @@ footer {
 .paragraph {
   color: var(--paper-dim);
   margin-bottom: 0.5rem;
+}
+
+#about .paragraph {
+  max-width: none;
 }
